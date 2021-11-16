@@ -16,7 +16,6 @@
  * The full GNU General Public License is included in this distribution in
  * the file called "COPYING".
  */
-
 #include <linux/ioctl.h>
 #include <linux/types.h>
 #include <linux/errno.h>

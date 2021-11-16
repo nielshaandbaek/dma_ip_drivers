@@ -916,7 +916,7 @@ static int xvsec_mcap_program(struct vsec_context *mcap_ctx, char *fname)
 
 	pr_info("After fopen\n");
 
-	ret = xvsec_util_get_file_size(fname, &file_size);
+	ret = xvsec_util_get_file_size(filep, &file_size);
 	if (ret < 0)
 		goto CLEANUP;
 

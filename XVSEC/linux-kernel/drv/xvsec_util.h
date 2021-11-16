@@ -40,6 +40,6 @@ int xvsec_util_fread(struct file *filep, uint64_t offset,
 int xvsec_util_fwrite(struct file *filep, uint64_t offset,
 	uint8_t *data, uint32_t size);
 int xvsec_util_fsync(struct file *filep);
-int xvsec_util_get_file_size(const char *fname, loff_t *size);
+int xvsec_util_get_file_size(struct file *filep, loff_t *size);
 
 #endif /* __XVSEC_UTIL_H__  */

@@ -387,7 +387,7 @@ int xvsec_mcapv2_file_download(
 	if (filep == NULL)
 		return -(ENOENT);
 
-	ret = xvsec_util_get_file_size(fname, &file_size);
+	ret = xvsec_util_get_file_size(filep, &file_size);
 	if (ret < 0)
 		goto CLEANUP_EXIT;
 
@@ -717,7 +717,7 @@ int xvsec_mcapv2_file_upload(
 	xvsec_util_fsync(filep);
 
 	/** Compare the requested size with file size */
-	ret = xvsec_util_get_file_size(fname, &file_size);
+	ret = xvsec_util_get_file_size(filep, &file_size);
 	if (ret < 0)
 		goto CLEANUP;
 
