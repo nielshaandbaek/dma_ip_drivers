@@ -1602,6 +1602,8 @@ static int is_config_bar(struct xdma_dev *xdev, int idx)
 	irq_id = read_register(&irq_regs->identifier);
 	cfg_id = read_register(&cfg_regs->identifier);
 
+	pr_info("BAR%d: irq_id=0x%x cfg_id=0x%x\n", idx, irq_id, cfg_id);
+
 	if (((irq_id & mask) == IRQ_BLOCK_ID) &&
 	    ((cfg_id & mask) == CONFIG_BLOCK_ID)) {
 		dbg_init("BAR %d is the XDMA config BAR\n", idx);
@@ -3259,7 +3261,7 @@ ssize_t xdma_xfer_aperture(struct xdma_engine *engine, bool write, u64 ep_addr,
 		sg = req->sg;
 		ep_addr = req->ep_addr + (req->offset & (aperture - 1));
 		i = req->sg_idx;
-		
+
 		for (sg = req->sg; i < sg_max && desc_idx < desc_max;
 			i++, sg = sg_next(sg)) {
 			dma_addr_t addr = sg_dma_address(sg);
@@ -3292,7 +3294,7 @@ ssize_t xdma_xfer_aperture(struct xdma_engine *engine, bool write, u64 ep_addr,
 				ep_addr += len;
 				addr += len;
 				tlen -= len;
-				
+
 				desc_idx++;
 				desc_cnt++;
 				if (desc_idx == desc_max)
@@ -3304,7 +3306,7 @@ ssize_t xdma_xfer_aperture(struct xdma_engine *engine, bool write, u64 ep_addr,
 			else
 				break;
 		}
-		
+
 		req->sg_offset = sg_offset;
 		req->sg_idx = i;
 
